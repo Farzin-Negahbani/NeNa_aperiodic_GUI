@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="formula">
+    <file>resources/1_over_f_formula.png</file>
+  </qresource>
+</RCC>

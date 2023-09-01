@@ -6,12 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1532</width>
-    <height>912</height>
+    <width>1531</width>
+    <height>993</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1531</width>
+    <height>993</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1531</width>
+    <height>993</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Unraveling of Neural Complexity Simulator</string>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
@@ -20,7 +35,7 @@
       <x>0</x>
       <y>0</y>
       <width>1531</width>
-      <height>891</height>
+      <height>971</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -53,7 +68,7 @@
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>460</y>
+        <y>500</y>
         <width>81</width>
         <height>25</height>
        </rect>
@@ -66,14 +81,14 @@
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>45</y>
+        <y>54</y>
         <width>221</width>
         <height>25</height>
        </rect>
       </property>
       <item>
        <property name="text">
-        <string>Fixed 1/f</string>
+        <string>1/f with knee</string>
        </property>
       </item>
       <item>
@@ -86,7 +101,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>460</y>
+        <y>500</y>
         <width>51</width>
         <height>25</height>
        </rect>
@@ -98,10 +113,10 @@
      <widget class="QStackedWidget" name="ap_stackedWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>130</y>
-        <width>321</width>
-        <height>291</height>
+        <x>0</x>
+        <y>150</y>
+        <width>331</width>
+        <height>271</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -112,33 +127,33 @@
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>70</y>
-          <width>67</width>
+          <y>240</y>
+          <width>91</width>
           <height>20</height>
          </rect>
         </property>
         <property name="text">
-         <string>Exponent</string>
+         <string>X (Exponent)</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_5">
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>30</y>
-          <width>71</width>
+          <y>191</y>
+          <width>91</width>
           <height>17</height>
          </rect>
         </property>
         <property name="text">
-         <string>Intercept</string>
+         <string>b (intercept)</string>
         </property>
        </widget>
        <widget class="QDoubleSpinBox" name="ap_fixed_exponent_spinBox">
         <property name="geometry">
          <rect>
-          <x>100</x>
-          <y>68</y>
+          <x>160</x>
+          <y>238</y>
           <width>81</width>
           <height>26</height>
          </rect>
@@ -147,26 +162,80 @@
          <double>-100.000000000000000</double>
         </property>
         <property name="maximum">
-         <double>-1.000000000000000</double>
+         <double>-0.010000000000000</double>
         </property>
         <property name="singleStep">
          <double>0.500000000000000</double>
+        </property>
+        <property name="value">
+         <double>-1.000000000000000</double>
         </property>
        </widget>
        <widget class="QDoubleSpinBox" name="ap_fixed_intercept_spinBox">
         <property name="geometry">
          <rect>
-          <x>100</x>
-          <y>27</y>
+          <x>160</x>
+          <y>188</y>
           <width>81</width>
           <height>26</height>
          </rect>
+        </property>
+        <property name="decimals">
+         <number>1</number>
         </property>
         <property name="minimum">
          <double>-99.000000000000000</double>
         </property>
         <property name="singleStep">
          <double>0.500000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>6</x>
+          <y>18</y>
+          <width>321</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/formula/resources/1_over_f_formula.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="ap_knee_spinBox">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>138</y>
+          <width>81</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="minimum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>500.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>141</y>
+          <width>61</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>k (Knee)</string>
         </property>
        </widget>
       </widget>
@@ -176,7 +245,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>41</y>
+        <y>50</y>
         <width>61</width>
         <height>30</height>
        </rect>
@@ -189,7 +258,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>420</y>
+        <y>460</y>
         <width>111</width>
         <height>17</height>
        </rect>
@@ -202,7 +271,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>490</y>
+        <y>530</y>
         <width>311</width>
         <height>191</height>
        </rect>
@@ -265,10 +334,10 @@
      <widget class="QGraphicsView" name="ap_power_widget">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>9</y>
-        <width>411</width>
-        <height>411</height>
+        <x>1070</x>
+        <y>10</y>
+        <width>451</width>
+        <height>451</height>
        </rect>
       </property>
      </widget>
@@ -277,8 +346,8 @@
        <rect>
         <x>340</x>
         <y>10</y>
-        <width>760</width>
-        <height>411</height>
+        <width>721</width>
+        <height>451</height>
        </rect>
       </property>
      </widget>
@@ -286,7 +355,7 @@
       <property name="geometry">
        <rect>
         <x>127</x>
-        <y>420</y>
+        <y>460</y>
         <width>1391</width>
         <height>20</height>
        </rect>
@@ -298,10 +367,10 @@
      <widget class="QGraphicsView" name="per_power_widget">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>440</y>
-        <width>411</width>
-        <height>411</height>
+        <x>1070</x>
+        <y>480</y>
+        <width>451</width>
+        <height>451</height>
        </rect>
       </property>
      </widget>
@@ -309,17 +378,17 @@
       <property name="geometry">
        <rect>
         <x>339</x>
-        <y>440</y>
-        <width>761</width>
-        <height>411</height>
+        <y>480</y>
+        <width>721</width>
+        <height>451</height>
        </rect>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QCheckBox" name="white_noise_checkbox">
       <property name="geometry">
        <rect>
         <x>23</x>
-        <y>84</y>
+        <y>111</y>
         <width>131</width>
         <height>23</height>
        </rect>
@@ -335,7 +404,7 @@
       <property name="geometry">
        <rect>
         <x>160</x>
-        <y>83</y>
+        <y>110</y>
         <width>81</width>
         <height>26</height>
        </rect>
@@ -360,7 +429,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>700</y>
+        <y>740</y>
         <width>121</width>
         <height>17</height>
        </rect>
@@ -373,7 +442,7 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>700</y>
+        <y>740</y>
         <width>201</width>
         <height>20</height>
        </rect>
@@ -386,7 +455,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>733</y>
+        <y>781</y>
         <width>121</width>
         <height>17</height>
        </rect>
@@ -398,8 +467,8 @@
      <widget class="QDoubleSpinBox" name="signal_duration_spinBox">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>730</y>
+        <x>150</x>
+        <y>778</y>
         <width>81</width>
         <height>26</height>
        </rect>
@@ -417,11 +486,11 @@
        <double>10.000000000000000</double>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="epochduration_spinBox">
+     <widget class="QDoubleSpinBox" name="epoch_duration_spinBox">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>760</y>
+        <x>150</x>
+        <y>817</y>
         <width>81</width>
         <height>26</height>
        </rect>
@@ -440,7 +509,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>764</y>
+        <y>821</y>
         <width>131</width>
         <height>17</height>
        </rect>
@@ -453,7 +522,7 @@
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>819</y>
+        <y>900</y>
         <width>81</width>
         <height>30</height>
        </rect>
@@ -475,7 +544,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>820</y>
+        <y>901</y>
         <width>171</width>
         <height>24</height>
        </rect>
@@ -484,11 +553,11 @@
        <string>Sampling frequency (Hz)</string>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="epochduration_spinBox_2">
+     <widget class="QDoubleSpinBox" name="epoch_overlap_spinBox">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>789</y>
+        <x>150</x>
+        <y>857</y>
         <width>81</width>
         <height>26</height>
        </rect>
@@ -507,7 +576,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>793</y>
+        <y>861</y>
         <width>131</width>
         <height>17</height>
        </rect>
@@ -532,7 +601,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1532</width>
+     <width>1531</width>
      <height>22</height>
     </rect>
    </property>
@@ -562,21 +631,23 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="formulas.qrc"/>
+ </resources>
  <connections>
   <connection>
-   <sender>checkBox</sender>
+   <sender>white_noise_checkbox</sender>
    <signal>clicked(bool)</signal>
    <receiver>ap_gaussian_spinBox</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>56</x>
-     <y>149</y>
+     <x>58</x>
+     <y>184</y>
     </hint>
     <hint type="destinationlabel">
-     <x>217</x>
-     <y>154</y>
+     <x>219</x>
+     <y>186</y>
     </hint>
    </hints>
   </connection>
@@ -587,8 +658,8 @@
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>206</x>
-     <y>108</y>
+     <x>208</x>
+     <y>129</y>
     </hint>
     <hint type="destinationlabel">
      <x>288</x>
@@ -604,10 +675,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>43</x>
-     <y>518</y>
+     <y>558</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1526</x>
+     <x>1524</x>
      <y>506</y>
     </hint>
    </hints>
@@ -620,10 +691,10 @@
    <hints>
     <hint type="sourcelabel">
      <x>123</x>
-     <y>518</y>
+     <y>558</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1526</x>
+     <x>1524</x>
      <y>607</y>
     </hint>
    </hints>
@@ -635,11 +706,11 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>162</x>
-     <y>220</y>
+     <x>164</x>
+     <y>414</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1526</x>
+     <x>1524</x>
      <y>733</y>
     </hint>
    </hints>
@@ -651,12 +722,156 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>141</x>
-     <y>272</y>
+     <x>162</x>
+     <y>464</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1526</x>
+     <x>1524</x>
      <y>688</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionPSD_X_axis_log_scale</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_psd_plot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>765</x>
+     <y>496</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>signal_duration_spinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>183</x>
+     <y>842</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1524</x>
+     <y>547</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>epoch_duration_spinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>882</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1524</x>
+     <y>813</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>epoch_overlap_spinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>168</x>
+     <y>917</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1524</x>
+     <y>905</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fs_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>241</x>
+     <y>957</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1524</x>
+     <y>959</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionPSD_Y_axis_log_scale</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_psd_plot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>765</x>
+     <y>496</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ap_gaussian_spinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>186</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>765</x>
+     <y>496</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ap_knee_spinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>364</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>765</x>
+     <y>496</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>white_noise_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>765</x>
+     <y>496</y>
     </hint>
    </hints>
   </connection>
@@ -665,5 +880,6 @@
   <slot>add_per_signal()</slot>
   <slot>update_ap_view()</slot>
   <slot>remove_per_signal()</slot>
+  <slot>update_psd_plot()</slot>
  </slots>
 </ui>
