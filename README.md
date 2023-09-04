@@ -16,3 +16,9 @@ Then you can install repository's required python packages using:
 ```Shell
 pip install -r requirements.txt
 ```
+
+## Run GUI
+Make sure that you have the python enviroment activated, then run:
+```Shell
+python gui.py
+```
