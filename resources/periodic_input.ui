@@ -44,6 +44,9 @@
    <property name="minimum">
     <double>1.000000000000000</double>
    </property>
+   <property name="value">
+    <double>12.000000000000000</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="amp_spinBox">
    <property name="geometry">
@@ -60,6 +63,12 @@
    <property name="minimum">
     <double>0.100000000000000</double>
    </property>
+   <property name="singleStep">
+    <double>0.500000000000000</double>
+   </property>
+   <property name="value">
+    <double>2.000000000000000</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="freq_width_spinBox">
    <property name="geometry">
@@ -75,6 +84,12 @@
    </property>
    <property name="minimum">
     <double>0.100000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>0.500000000000000</double>
+   </property>
+   <property name="value">
+    <double>3.500000000000000</double>
    </property>
   </widget>
   <widget class="QLabel" name="label">
