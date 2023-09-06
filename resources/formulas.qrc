@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="formula">
-    <file>resources/1_over_f_formula.png</file>
+    <file>synaptic.png</file>
+    <file>power_law.png</file>
+    <file>knee.png</file>
   </qresource>
 </RCC>

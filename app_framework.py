@@ -20,6 +20,7 @@ from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as Navigatio
 import fooof
 from utils import periodic_signal, irasa, sim_peak_oscillation
 from yasa import sliding_window
+from scipy.stats import zscore
 
 from neurodsp.sim import (sim_powerlaw, sim_random_walk, sim_synaptic_current,
                           sim_knee, sim_frac_gaussian_noise, sim_frac_brownian_motion)
@@ -83,7 +84,7 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
         plt.tight_layout()
         plt.plot(self.fm.freqs, 10**(self.fm.power_spectrum)    , c='k', label="Power spectrum", lw=2)
         plt.plot(self.fm.freqs, 10**(self.fm._ap_fit)           , c='b',linestyle='--', label="Aperiodic fit", lw=2)
-        plt.plot(self.fm.freqs, 10**(self.fm.fooofed_spectrum_) , c='r', label="FoooF model fit", lw=2)
+        plt.plot(self.fm.freqs, 10**(self.fm.fooofed_spectrum_) , c='r', label="FOOOF model fit", lw=2)
         plt.yscale(self.yscale)
         plt.xscale(self.xscale)
         self.fooof_psd_fig.set_dpi(self.dpi)
@@ -91,7 +92,7 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
         self.fooof_psd_canvas = FigureCanvas(self.fooof_psd_fig)
         self.fooof_psd_scene.addWidget(self.fooof_psd_canvas)
         self.fooof_res_psd_widget.setScene(self.fooof_psd_scene)
-        self.fooof_psd_fig.suptitle('Full signal PSD with FoooF result', fontsize=8)
+        self.fooof_psd_fig.suptitle('Full signal PSD with FOOOF result', fontsize=8)
         self.fooof_psd_fig.axes[0].set_xlabel("Frequency (Hz)", fontsize=8)
         self.fooof_psd_fig.axes[0].set_ylabel("PSD log($V^2$/Hz)", fontsize=8)
         self.fooof_psd_fig.axes[0].legend()
@@ -261,6 +262,8 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
     def update_ap_view(self, value):
 
         random_seed = self.rand_seed_spinBox.value()
+        np.random.seed(random_seed)
+
         duration = self.signal_duration_spinBox.value()
         epoch_step = self.epoch_step_spinBox.value()
         self.sample_rate = self.fs_spinBox.value()
@@ -279,18 +282,11 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
             self.per_table.setItem(row, 2, QTableWidgetItem(str(l[2])))
         self.per_table.setRowCount(len(self.periodic_params))
 
-        if self.white_noise_checkbox.isChecked():
-            nlv = self.ap_gaussian_spinBox.value()
-        else:
-            nlv = None
-
         ap_model = self.ap_model_comboBox.currentText()
 
-        if ap_model == '1/f with knee':
+        if ap_model == '1/f Power Law':
             # Power law parameters
-            ap_inter = self.ap_fixed_intercept_spinBox.value() 
             ap_exp = self.ap_fixed_exponent_spinBox.value()
-            ap_knee = self.ap_knee_spinBox.value()
 
             ap_signal = sim_powerlaw(duration, self.sample_rate, ap_exp, f_range=(1, None))
 
@@ -306,13 +302,26 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
                                                     bw=width, 
                                                     height=amp_osc)
 
-                # per_signal = periodic_signal(sample_rate=self.sample_rate, 
-                #                                 duration=duration, 
-                #                                 nlv=nlv, 
-                #                                 periodic_params=self.periodic_params,
-                #                                 seed=random_seed)
-                                                
             full_signal = per_signal + ap_signal
+
+        elif ap_model == '1/f Power Law':
+            ap_knee = self.ap_knee_spinBox.value()
+
+        elif ap_model == 'Synaptic Activity Model':
+            print()
+        elif ap_model == 'Wilson Cowan Model':
+            print()
+        elif ap_model == 'Hodgkin–Huxley Model':
+            print()
+
+        if self.white_noise_checkbox.isChecked():
+            nlv = self.ap_gaussian_spinBox.value()
+
+            full_signal += np.random.normal(scale=nlv, size=full_signal.size)
+
+                
+
+                                     
 
 
         info = mne.create_info(ch_names=["Aperiodic"], ch_types=["misc"], sfreq=self.sample_rate)
