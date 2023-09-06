@@ -74,8 +74,8 @@
      <widget class="QPushButton" name="remove_per_button">
       <property name="geometry">
        <rect>
-        <x>76</x>
-        <y>470</y>
+        <x>86</x>
+        <y>450</y>
         <width>81</width>
         <height>25</height>
        </rect>
@@ -87,7 +87,7 @@
      <widget class="QComboBox" name="ap_model_comboBox">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>90</x>
         <y>50</y>
         <width>221</width>
         <height>25</height>
@@ -102,8 +102,8 @@
      <widget class="QPushButton" name="add_per_button">
       <property name="geometry">
        <rect>
-        <x>16</x>
-        <y>470</y>
+        <x>26</x>
+        <y>450</y>
         <width>51</width>
         <height>25</height>
        </rect>
@@ -117,7 +117,7 @@
        <rect>
         <x>0</x>
         <y>120</y>
-        <width>331</width>
+        <width>341</width>
         <height>301</height>
        </rect>
       </property>
@@ -128,8 +128,8 @@
        <widget class="QLabel" name="label_4">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>249</y>
+          <x>30</x>
+          <y>229</y>
           <width>91</width>
           <height>20</height>
          </rect>
@@ -141,8 +141,8 @@
        <widget class="QLabel" name="label_5">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>200</y>
+          <x>30</x>
+          <y>180</y>
           <width>91</width>
           <height>17</height>
          </rect>
@@ -154,8 +154,8 @@
        <widget class="QDoubleSpinBox" name="ap_fixed_exponent_spinBox">
         <property name="geometry">
          <rect>
-          <x>160</x>
-          <y>247</y>
+          <x>170</x>
+          <y>227</y>
           <width>81</width>
           <height>26</height>
          </rect>
@@ -176,8 +176,8 @@
        <widget class="QDoubleSpinBox" name="ap_fixed_intercept_spinBox">
         <property name="geometry">
          <rect>
-          <x>160</x>
-          <y>197</y>
+          <x>170</x>
+          <y>177</y>
           <width>81</width>
           <height>26</height>
          </rect>
@@ -195,7 +195,7 @@
        <widget class="QLabel" name="label_11">
         <property name="geometry">
          <rect>
-          <x>6</x>
+          <x>11</x>
           <y>18</y>
           <width>321</width>
           <height>91</height>
@@ -208,14 +208,14 @@
        <widget class="QDoubleSpinBox" name="ap_knee_spinBox">
         <property name="geometry">
          <rect>
-          <x>160</x>
-          <y>147</y>
+          <x>170</x>
+          <y>127</y>
           <width>81</width>
           <height>26</height>
          </rect>
         </property>
         <property name="decimals">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="minimum">
          <double>0.000000000000000</double>
@@ -230,8 +230,8 @@
        <widget class="QLabel" name="label_13">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>150</y>
+          <x>30</x>
+          <y>130</y>
           <width>61</width>
           <height>17</height>
          </rect>
@@ -246,7 +246,7 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>30</x>
         <y>46</y>
         <width>61</width>
         <height>30</height>
@@ -260,7 +260,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>431</y>
+        <y>420</y>
         <width>121</width>
         <height>17</height>
        </rect>
@@ -279,8 +279,8 @@
      <widget class="QTableWidget" name="per_table">
       <property name="geometry">
        <rect>
-        <x>16</x>
-        <y>500</y>
+        <x>26</x>
+        <y>480</y>
         <width>307</width>
         <height>171</height>
        </rect>
@@ -364,7 +364,7 @@
       <property name="geometry">
        <rect>
         <x>150</x>
-        <y>431</y>
+        <y>420</y>
         <width>171</width>
         <height>20</height>
        </rect>
@@ -396,7 +396,7 @@
      <widget class="QCheckBox" name="white_noise_checkbox">
       <property name="geometry">
        <rect>
-        <x>23</x>
+        <x>33</x>
         <y>91</y>
         <width>131</width>
         <height>23</height>
@@ -412,7 +412,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>160</x>
+        <x>170</x>
         <y>90</y>
         <width>81</width>
         <height>26</height>
@@ -489,9 +489,9 @@
      <widget class="QSpinBox" name="fs_spinBox">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>809</y>
-        <width>81</width>
+        <x>220</x>
+        <y>733</y>
+        <width>111</width>
         <height>30</height>
        </rect>
       </property>
@@ -511,9 +511,9 @@
      <widget class="QDoubleSpinBox" name="signal_duration_spinBox">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>767</y>
-        <width>81</width>
+        <x>220</x>
+        <y>691</y>
+        <width>111</width>
         <height>26</height>
        </rect>
       </property>
@@ -536,8 +536,8 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>770</y>
+        <x>40</x>
+        <y>694</y>
         <width>121</width>
         <height>17</height>
        </rect>
@@ -550,7 +550,7 @@
       <property name="geometry">
        <rect>
         <x>150</x>
-        <y>690</y>
+        <y>663</y>
         <width>171</width>
         <height>20</height>
        </rect>
@@ -562,8 +562,8 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>690</y>
+        <x>17</x>
+        <y>663</y>
         <width>131</width>
         <height>17</height>
        </rect>
@@ -582,8 +582,8 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>810</y>
+        <x>40</x>
+        <y>734</y>
         <width>171</width>
         <height>24</height>
        </rect>
@@ -595,9 +595,9 @@
      <widget class="QDoubleSpinBox" name="epoch_duration_spinBox">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>856</y>
-        <width>81</width>
+        <x>220</x>
+        <y>780</y>
+        <width>111</width>
         <height>26</height>
        </rect>
       </property>
@@ -617,8 +617,8 @@
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>900</y>
+        <x>40</x>
+        <y>824</y>
         <width>131</width>
         <height>17</height>
        </rect>
@@ -630,9 +630,9 @@
      <widget class="QDoubleSpinBox" name="epoch_step_spinBox">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>896</y>
-        <width>81</width>
+        <x>220</x>
+        <y>820</y>
+        <width>111</width>
         <height>26</height>
        </rect>
       </property>
@@ -655,8 +655,8 @@
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>860</y>
+        <x>40</x>
+        <y>784</y>
         <width>131</width>
         <height>17</height>
        </rect>
@@ -681,27 +681,68 @@
      <widget class="QLabel" name="label_46">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>730</y>
-        <width>121</width>
+        <x>44</x>
+        <y>860</y>
+        <width>101</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Random seed</string>
+       <string>Rand seed</string>
       </property>
      </widget>
      <widget class="QSpinBox" name="rand_seed_spinBox">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>726</y>
-        <width>81</width>
+        <x>220</x>
+        <y>857</y>
+        <width>111</width>
         <height>26</height>
        </rect>
       </property>
       <property name="value">
        <number>1</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_47">
+      <property name="geometry">
+       <rect>
+        <x>44</x>
+        <y>903</y>
+        <width>151</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>n_fft (welch psd)</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="nfft_spinBox">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>900</y>
+        <width>111</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+      <property name="minimum">
+       <number>1000</number>
+      </property>
+      <property name="maximum">
+       <number>10000</number>
+      </property>
+      <property name="singleStep">
+       <number>256</number>
+      </property>
+      <property name="value">
+       <number>1000</number>
       </property>
      </widget>
     </widget>
@@ -758,7 +799,7 @@
         <x>30</x>
         <y>220</y>
         <width>691</width>
-        <height>391</height>
+        <height>441</height>
        </rect>
       </property>
      </widget>
@@ -897,7 +938,7 @@
        <double>0.500000000000000</double>
       </property>
       <property name="value">
-       <double>1.000000000000000</double>
+       <double>0.500000000000000</double>
       </property>
      </widget>
      <widget class="QDoubleSpinBox" name="fooof_peak_th_spinBox">
@@ -1084,7 +1125,7 @@
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>730</y>
+        <y>720</y>
         <width>333</width>
         <height>201</height>
        </rect>
@@ -1148,7 +1189,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>630</y>
+        <y>680</y>
         <width>131</width>
         <height>17</height>
        </rect>
@@ -1168,7 +1209,7 @@
       <property name="geometry">
        <rect>
         <x>440</x>
-        <y>704</y>
+        <y>746</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -1181,7 +1222,7 @@
       <property name="geometry">
        <rect>
         <x>440</x>
-        <y>743</y>
+        <y>785</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -1194,7 +1235,7 @@
       <property name="geometry">
        <rect>
         <x>440</x>
-        <y>782</y>
+        <y>824</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -1216,45 +1257,6 @@
        <string>R^2</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_36">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>824</y>
-        <width>81</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Error</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_37">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>660</y>
-        <width>121</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Peak parameters:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_38">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>660</y>
-        <width>151</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Aperiodic parameters:</string>
-      </property>
-     </widget>
      <widget class="QTextEdit" name="fooof_res_exp_textEdit">
       <property name="enabled">
        <bool>true</bool>
@@ -1262,7 +1264,7 @@
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>698</y>
+        <y>740</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -1278,7 +1280,7 @@
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>738</y>
+        <y>780</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -1288,22 +1290,6 @@
       </property>
      </widget>
      <widget class="QTextEdit" name="fooof_res_knee_textEdit">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>778</y>
-        <width>151</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="fooof_res_error_textEdit">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -1370,7 +1356,7 @@
         <x>800</x>
         <y>220</y>
         <width>691</width>
-        <height>391</height>
+        <height>441</height>
        </rect>
       </property>
      </widget>
@@ -1474,7 +1460,7 @@
       <property name="geometry">
        <rect>
         <x>780</x>
-        <y>630</y>
+        <y>690</y>
         <width>131</width>
         <height>17</height>
        </rect>
@@ -1490,24 +1476,11 @@
        <string>IRASA Results</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_48">
-      <property name="geometry">
-       <rect>
-        <x>790</x>
-        <y>660</y>
-        <width>121</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Peak parameters:</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_44">
       <property name="geometry">
        <rect>
-        <x>1210</x>
-        <y>787</y>
+        <x>810</x>
+        <y>862</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -1516,27 +1489,14 @@
        <string>R^2</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_47">
-      <property name="geometry">
-       <rect>
-        <x>1190</x>
-        <y>660</y>
-        <width>151</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Aperiodic parameters:</string>
-      </property>
-     </widget>
      <widget class="QTextEdit" name="irasa_res_exp_textEdit">
       <property name="enabled">
        <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
-        <x>1320</x>
-        <y>698</y>
+        <x>920</x>
+        <y>774</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -1548,8 +1508,8 @@
      <widget class="QLabel" name="label_45">
       <property name="geometry">
        <rect>
-        <x>1210</x>
-        <y>704</y>
+        <x>810</x>
+        <y>780</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -1561,8 +1521,8 @@
      <widget class="QLabel" name="label_43">
       <property name="geometry">
        <rect>
-        <x>1210</x>
-        <y>743</y>
+        <x>810</x>
+        <y>819</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -1577,8 +1537,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>1320</x>
-        <y>738</y>
+        <x>920</x>
+        <y>814</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -1593,8 +1553,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>1320</x>
-        <y>782</y>
+        <x>920</x>
+        <y>857</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -1606,8 +1566,8 @@
      <widget class="QLabel" name="label_49">
       <property name="geometry">
        <rect>
-        <x>1210</x>
-        <y>830</y>
+        <x>810</x>
+        <y>905</y>
         <width>91</width>
         <height>17</height>
        </rect>
@@ -1622,43 +1582,14 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>1320</x>
-        <y>824</y>
+        <x>920</x>
+        <y>899</y>
         <width>151</width>
         <height>31</height>
        </rect>
       </property>
       <property name="readOnly">
        <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="fooof_res_std_textEdit">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>269</x>
-        <y>690</y>
-        <width>104</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_51">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>696</y>
-        <width>81</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>std (osc)</string>
       </property>
      </widget>
      <widget class="QTextEdit" name="irasa_hset_textEdit">
@@ -1726,35 +1657,6 @@
       </property>
       <property name="text">
        <string>Sliding window length</string>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="irasa_res_std_textEdit">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>889</x>
-        <y>694</y>
-        <width>151</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="fooof_res_std_textEdit_2">
-      <property name="geometry">
-       <rect>
-        <x>810</x>
-        <y>700</y>
-        <width>81</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>std (osc)</string>
       </property>
      </widget>
     </widget>
@@ -1841,8 +1743,8 @@
    <slot>add_per_signal()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>33</x>
-     <y>538</y>
+     <x>43</x>
+     <y>518</y>
     </hint>
     <hint type="destinationlabel">
      <x>1524</x>
@@ -1857,8 +1759,8 @@
    <slot>remove_per_signal()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>113</x>
-     <y>538</y>
+     <x>123</x>
+     <y>518</y>
     </hint>
     <hint type="destinationlabel">
      <x>1524</x>
@@ -1873,8 +1775,8 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>154</x>
-     <y>393</y>
+     <x>172</x>
+     <y>373</y>
     </hint>
     <hint type="destinationlabel">
      <x>1524</x>
@@ -1889,8 +1791,8 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>152</x>
-     <y>443</y>
+     <x>172</x>
+     <y>423</y>
     </hint>
     <hint type="destinationlabel">
      <x>1524</x>
@@ -1953,8 +1855,8 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>194</x>
-     <y>343</y>
+     <x>204</x>
+     <y>323</y>
     </hint>
     <hint type="destinationlabel">
      <x>765</x>
@@ -2011,30 +1913,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>rand_seed_spinBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>dialog</receiver>
-   <slot>update_ap_view()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>245</x>
-     <y>787</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>414</x>
-     <y>-14</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>signal_duration_spinBox</sender>
    <signal>valueChanged(double)</signal>
    <receiver>dialog</receiver>
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>215</x>
-     <y>826</y>
+     <x>235</x>
+     <y>750</y>
     </hint>
     <hint type="destinationlabel">
      <x>470</x>
@@ -2049,8 +1935,8 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>202</x>
-     <y>873</y>
+     <x>222</x>
+     <y>797</y>
     </hint>
     <hint type="destinationlabel">
      <x>622</x>
@@ -2065,8 +1951,8 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>232</x>
-     <y>919</y>
+     <x>252</x>
+     <y>843</y>
     </hint>
     <hint type="destinationlabel">
      <x>803</x>
@@ -2081,12 +1967,44 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>961</y>
+     <x>273</x>
+     <y>885</y>
     </hint>
     <hint type="destinationlabel">
      <x>957</x>
      <y>-4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rand_seed_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>265</x>
+     <y>918</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>414</x>
+     <y>-14</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nfft_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>303</x>
+     <y>958</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>261</x>
+     <y>-16</y>
     </hint>
    </hints>
   </connection>

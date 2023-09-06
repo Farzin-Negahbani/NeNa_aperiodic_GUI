@@ -18,8 +18,12 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
 import fooof
-from utils import elec_phys_signal, irasa
+from utils import periodic_signal, irasa, sim_peak_oscillation
 from yasa import sliding_window
+
+from neurodsp.sim import (sim_powerlaw, sim_random_walk, sim_synaptic_current,
+                          sim_knee, sim_frac_gaussian_noise, sim_frac_brownian_motion)
+
 
 
 class PeriodicInput(QDialog, input_diag_design.Ui_Dialog):
@@ -38,10 +42,14 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
     def __init__(self, dpi):
         super(self.__class__, self).__init__()
         self.setupUi(self)
-        
+
+
         self.dpi = dpi
         self.periodic_params = [(15.0, 3.0, 4.5)]
         self.irasa_hset_textEdit.setText("1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9")
+
+        self.xscale = 'linear'
+        self.yscale = 'log'
 
         # Passing a value for compatibility
         self.update_ap_view(0)
@@ -73,12 +81,13 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
         self.fooof_psd_scene = QGraphicsScene()
         self.fooof_psd_fig = plt.figure() 
         plt.tight_layout()
-        plt.yscale('log')
-        plt.plot(self.fm.freqs, np.exp(self.fm.power_spectrum), c='k', label="Power spectrum", lw=2)
-        plt.plot(self.fm.freqs, np.exp(self.fm._ap_fit), c='b',linestyle='--', label="Aperiodic fit", lw=2)
-        plt.plot(self.fm.freqs, np.exp(self.fm.fooofed_spectrum_), c='r', label="FoooF model fit", lw=2)
+        plt.plot(self.fm.freqs, 10**(self.fm.power_spectrum)    , c='k', label="Power spectrum", lw=2)
+        plt.plot(self.fm.freqs, 10**(self.fm._ap_fit)           , c='b',linestyle='--', label="Aperiodic fit", lw=2)
+        plt.plot(self.fm.freqs, 10**(self.fm.fooofed_spectrum_) , c='r', label="FoooF model fit", lw=2)
+        plt.yscale(self.yscale)
+        plt.xscale(self.xscale)
         self.fooof_psd_fig.set_dpi(self.dpi)
-        self.fooof_psd_fig.set_size_inches(670/self.dpi, 370/self.dpi, forward=True)
+        self.fooof_psd_fig.set_size_inches(690/self.dpi, 370/self.dpi, forward=True)
         self.fooof_psd_canvas = FigureCanvas(self.fooof_psd_fig)
         self.fooof_psd_scene.addWidget(self.fooof_psd_canvas)
         self.fooof_res_psd_widget.setScene(self.fooof_psd_scene)
@@ -88,10 +97,9 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
         self.fooof_psd_fig.axes[0].legend()
 
         self.fooof_res_r2_textEdit.setText(str(round(self.fm.r_squared_,3)))
-        self.fooof_res_error_textEdit.setText(str(round(self.fm.error_,3)))
+        #self.fooof_res_error_textEdit.setText(str(round(self.fm.error_,3)))
         self.fooof_res_runtime_testEdit.setText(str(round(end_time-start_time,3)))
         self.fooof_res_inter_textEdit.setText(str(round(self.fm.aperiodic_params_[0],3)))
-        self.fooof_res_std_textEdit.setText(str(round(np.std(self.fm.power_spectrum-self.fm._ap_fit,axis=-1, ddof=1),3)))
 
         if aperiodic_mode == 'fixed':
             self.fooof_res_knee_textEdit.setText(str(0))
@@ -128,16 +136,18 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
         self.irasa_psd_scene = QGraphicsScene()
         self.irasa_psd_fig = plt.figure() 
         plt.tight_layout()
-        plt.yscale('log')
         plt.plot(freqs, (psd_ap+psd_osc).ravel(), c='k', label="Power spectrum", lw=2)
         plt.plot(freqs, psd_ap.ravel(), c='b',linestyle='--', label="Aperiodic fit", lw=2)
+        plt.yscale(self.yscale)
+        plt.xscale(self.xscale)
         #plt.plot(freqs, psd_osc.ravel(), c='cyan',linestyle='--', label="Periodic components", lw=2)
         self.irasa_psd_fig.set_dpi(self.dpi)
-        self.irasa_psd_fig.set_size_inches(670/self.dpi, 370/self.dpi, forward=True)
+        self.irasa_psd_fig.set_size_inches(690/self.dpi, 370/self.dpi, forward=True)
         self.irasa_psd_canvas = FigureCanvas(self.irasa_psd_fig)
         self.irasa_psd_scene.addWidget(self.irasa_psd_canvas)
         self.irasa_res_psd_widget.setScene(self.irasa_psd_scene)
         self.irasa_psd_fig.suptitle('Full signal PSD with IRASA result', fontsize=8)
+        #TODO Adjust labels based on scale
         self.irasa_psd_fig.axes[0].set_xlabel("Frequency (Hz)", fontsize=8)
         self.irasa_psd_fig.axes[0].set_ylabel("PSD log($V^2$/Hz)", fontsize=8)
         self.irasa_psd_fig.axes[0].legend()
@@ -145,7 +155,6 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
         self.irasa_res_exp_textEdit.setText(str(round(fit_params['Slope'].values[0],3)))
         self.irasa_res_inter_textEdit.setText(str(round(fit_params['Intercept'].values[0],3)))
         self.irasa_res_r2_textEdit.setText(str(round(fit_params['R^2'].values[0],3)))
-        self.irasa_res_std_textEdit.setText(str(round(np.log10(fit_params['std(osc)'].values[0]),3)))
         self.irasa_rest_runtime_textEdit.setText(str(round(end_time-start_time,3)))
 
     # Removes selected row from per_tableview
@@ -172,9 +181,7 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
             self.per_table.setItem(row, 0, QTableWidgetItem(str(freq)))
             self.per_table.setItem(row, 1, QTableWidgetItem(str(amp)))
             self.per_table.setItem(row, 2, QTableWidgetItem(str(width)))
-
             self.periodic_params.append((freq,amp,width))
-    
             self.update_ap_view(0)
 
     def update_time_plot(self):
@@ -206,14 +213,30 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
 
     def update_psd_plot(self, value):
         
-        xscale = 'log' if self.actionPSD_X_axis_log_scale.isChecked() else 'linear'
-        dB = True if self.actionPSD_Y_axis_log_scale.isChecked() else False
+        self.xscale = 'log' if self.actionPSD_X_axis_log_scale.isChecked() else 'linear'
+        self.yscale = 'log' if self.actionPSD_Y_axis_log_scale.isChecked() else 'linear'
+        dB = True if self.yscale == 'log' else False
 
+        # Calculate PSDs
+        self.ap_psd = self.ap_obj.compute_psd(method='welch', 
+                                            picks='all', 
+                                            fmin=1, 
+                                            fmax=100, 
+                                            n_fft=self.n_fft, 
+                                            average='median')
+
+        self.full_psd = self.full_obj.compute_psd(method='welch', 
+                                                picks='all', 
+                                                fmin=1,  
+                                                fmax=100, 
+                                                n_fft=self.n_fft, 
+                                                average='median')
+                                                
         self.ap_psd_scene = QGraphicsScene()
         self.ap_psd_fig = self.ap_psd.plot(picks='Aperiodic', 
                                             dB=dB, 
                                             amplitude='auto', 
-                                            xscale=xscale, 
+                                            xscale=self.xscale, 
                                             spatial_colors=False,
                                             show=False)
         self.ap_psd_fig.set_dpi(self.dpi)
@@ -226,7 +249,7 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
         self.full_psd_fig = self.full_psd.plot(picks='Full Signal', 
                                             dB=dB, 
                                             amplitude='auto', 
-                                            xscale=xscale, 
+                                            xscale=self.xscale, 
                                             spatial_colors=False,
                                             show=False)
         self.full_psd_fig.set_dpi(self.dpi)
@@ -237,25 +260,17 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
 
     def update_ap_view(self, value):
 
-        ap_model = self.ap_model_comboBox.currentText()
-
-        ap_inter = self.ap_fixed_intercept_spinBox.value() 
-        ap_exp = self.ap_fixed_exponent_spinBox.value()
-        ap_knee = self.ap_knee_spinBox.value()
         random_seed = self.rand_seed_spinBox.value()
-
-        sample_rate = self.fs_spinBox.value()
         duration = self.signal_duration_spinBox.value()
-        
-        epoch_duration = self.epoch_duration_spinBox.value()
         epoch_step = self.epoch_step_spinBox.value()
+        self.sample_rate = self.fs_spinBox.value()
+        self.epoch_duration = self.epoch_duration_spinBox.value()
 
-        if self.white_noise_checkbox.isChecked():
-            nlv = self.ap_gaussian_spinBox.value()
-        else:
-            nlv = None
+        self.n_fft = min(self.nfft_spinBox.value(), int(self.sample_rate*self.epoch_duration))
 
-        # TODO: extract periodic params
+        if self.n_fft != self.nfft_spinBox.value():
+            self.nfft_spinBox.setValue(self.n_fft)
+
         for row, l in enumerate(self.periodic_params):
             # L has the form of (freq, aplitude, width)
             self.per_table.insertRow(row)
@@ -264,50 +279,54 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
             self.per_table.setItem(row, 2, QTableWidgetItem(str(l[2])))
         self.per_table.setRowCount(len(self.periodic_params))
 
-        # Generate signals
-        ap_signal, full_signal, per_signal = elec_phys_signal(
-                                                exponent=-ap_exp, 
-                                                knee = ap_knee,
-                                                intercept = ap_inter,
-                                                sample_rate=sample_rate, 
-                                                duration=duration, 
-                                                nlv=nlv, 
-                                                periodic_params=self.periodic_params,
-                                                seed=random_seed)
+        if self.white_noise_checkbox.isChecked():
+            nlv = self.ap_gaussian_spinBox.value()
+        else:
+            nlv = None
 
-        info = mne.create_info(ch_names=["Aperiodic"], ch_types=["misc"], sfreq=sample_rate)
+        ap_model = self.ap_model_comboBox.currentText()
+
+        if ap_model == '1/f with knee':
+            # Power law parameters
+            ap_inter = self.ap_fixed_intercept_spinBox.value() 
+            ap_exp = self.ap_fixed_exponent_spinBox.value()
+            ap_knee = self.ap_knee_spinBox.value()
+
+            ap_signal = sim_powerlaw(duration, self.sample_rate, ap_exp, f_range=(1, None))
+
+            per_signal = np.zeros_like(ap_signal)
+
+            for osc_params in self.periodic_params:
+
+                freq_osc, amp_osc, width = osc_params
+
+                per_signal += sim_peak_oscillation(ap_signal, 
+                                                    fs=self.sample_rate, 
+                                                    freq=freq_osc, 
+                                                    bw=width, 
+                                                    height=amp_osc)
+
+                # per_signal = periodic_signal(sample_rate=self.sample_rate, 
+                #                                 duration=duration, 
+                #                                 nlv=nlv, 
+                #                                 periodic_params=self.periodic_params,
+                #                                 seed=random_seed)
+                                                
+            full_signal = per_signal + ap_signal
+
+
+        info = mne.create_info(ch_names=["Aperiodic"], ch_types=["misc"], sfreq=self.sample_rate)
         self.ap_obj = mne.io.RawArray(ap_signal.reshape(1,-1), info)
 
-        #info = mne.create_info(ch_names=["Periodic"], ch_types=["misc"], sfreq=sample_rate)
-        #self.per_obj = mne.io.RawArray(per_signal.reshape(1,-1), info)
-
-        info = mne.create_info(ch_names=["Full Signal"], ch_types=["misc"], sfreq=sample_rate)
+        info = mne.create_info(ch_names=["Full Signal"], ch_types=["misc"], sfreq=self.sample_rate)
         self.full_obj_cont = mne.io.RawArray(full_signal.reshape(1,-1), info)
 
         _, ep_data = sliding_window(full_signal.reshape(1,-1),
-                                    window=epoch_duration,
-                                    sf=sample_rate,
+                                    window=self.epoch_duration,
+                                    sf=self.sample_rate,
                                     step=epoch_step)
 
         self.full_obj = mne.EpochsArray(ep_data, info.copy())
-
-        # Decide on welch params
-        n_fft = int(sample_rate * epoch_duration)
-
-        # Calculate PSDs
-        self.ap_psd = self.ap_obj.compute_psd(method='welch', 
-                                            picks='all', 
-                                            fmin=1, 
-                                            fmax=100, 
-                                            n_fft=n_fft, 
-                                            average='median')
-
-        self.full_psd = self.full_obj.compute_psd(method='welch', 
-                                                picks='all', 
-                                                fmin=1,  
-                                                fmax=100, 
-                                                n_fft=n_fft, 
-                                                average='median')
 
         # plot signals 
         self.update_time_plot()
