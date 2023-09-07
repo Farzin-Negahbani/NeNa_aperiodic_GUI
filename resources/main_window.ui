@@ -408,19 +408,6 @@
          <string>Tau decay (s)</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_54">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>250</y>
-          <width>91</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>time ker</string>
-        </property>
-       </widget>
        <widget class="QSpinBox" name="ap_synaptic_firing_rate_spinBox">
         <property name="geometry">
          <rect>
@@ -485,31 +472,6 @@
         </property>
         <property name="value">
          <double>0.010000000000000</double>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="ap_synaptic_tker_spinBox">
-        <property name="geometry">
-         <rect>
-          <x>188</x>
-          <y>250</y>
-          <width>101</width>
-          <height>26</height>
-         </rect>
-        </property>
-        <property name="decimals">
-         <number>3</number>
-        </property>
-        <property name="minimum">
-         <double>0.001000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>2.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.001000000000000</double>
-        </property>
-        <property name="value">
-         <double>0.005000000000000</double>
         </property>
        </widget>
       </widget>
@@ -795,7 +757,7 @@
        <double>10.000000000000000</double>
       </property>
       <property name="maximum">
-       <double>50.000000000000000</double>
+       <double>500.000000000000000</double>
       </property>
       <property name="singleStep">
        <double>10.000000000000000</double>
@@ -879,7 +841,7 @@
        <double>1.000000000000000</double>
       </property>
       <property name="maximum">
-       <double>30.000000000000000</double>
+       <double>60.000000000000000</double>
       </property>
       <property name="value">
        <double>2.000000000000000</double>
@@ -2046,8 +2008,8 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>423</y>
+     <x>182</x>
+     <y>366</y>
     </hint>
     <hint type="destinationlabel">
      <x>1524</x>
@@ -2110,8 +2072,8 @@
    <slot>update_ap_view()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>204</x>
-     <y>323</y>
+     <x>244</x>
+     <y>316</y>
     </hint>
     <hint type="destinationlabel">
      <x>765</x>
@@ -2260,6 +2222,118 @@
     <hint type="destinationlabel">
      <x>261</x>
      <y>-16</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ap_model_comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>155</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>174</x>
+     <y>-4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ap_knee_exponent1_spinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>274</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>149</x>
+     <y>-4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ap_knee_exponent2_spinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>219</x>
+     <y>371</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>317</x>
+     <y>-18</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ap_synaptic_neurons_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>213</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>93</x>
+     <y>-15</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ap_synaptic_firing_rate_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>239</x>
+     <y>317</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>777</x>
+     <y>496</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ap_synaptic_tdecay_spinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>240</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>777</x>
+     <y>496</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ap_synaptic_trise_spinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>dialog</receiver>
+   <slot>update_ap_view()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>239</x>
+     <y>354</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>777</x>
+     <y>496</y>
     </hint>
    </hints>
   </connection>

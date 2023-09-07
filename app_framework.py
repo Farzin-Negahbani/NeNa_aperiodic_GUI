@@ -282,50 +282,59 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
             self.per_table.setItem(row, 2, QTableWidgetItem(str(l[2])))
         self.per_table.setRowCount(len(self.periodic_params))
 
-        ap_model = self.ap_model_comboBox.currentText()
+        self.ap_model = self.ap_model_comboBox.currentText()
 
-        if ap_model == '1/f Power Law':
+        if self.ap_model == '1/f Power Law':
             # Power law parameters
             ap_exp = self.ap_fixed_exponent_spinBox.value()
 
-            ap_signal = sim_powerlaw(duration, self.sample_rate, ap_exp, f_range=(1, None))
+            model_signal = sim_powerlaw(duration, self.sample_rate, ap_exp, f_range=(1, None))
 
-            per_signal = np.zeros_like(ap_signal)
+        elif self.ap_model == '1/f Knee':
+            # TODO increase signal duration limit
+            # Knee parameters
+            knee_knee = self.ap_knee_knee_spinBox.value()
+            knee_exp1 = self.ap_knee_exponent1_spinBox.value()
+            knee_exp2 = self.ap_knee_exponent2_spinBox.value()
 
-            for osc_params in self.periodic_params:
+            model_signal = sim_knee(duration, self.sample_rate, knee_exp1, knee_exp2, knee_knee)
+            
+        elif self.ap_model == 'Synaptic Activity Model':
+            n_neurons = self.ap_synaptic_neurons_spinBox.value()
+            firing_rate = self.ap_synaptic_firing_rate_spinBox.value()
+            t_rise = self.ap_synaptic_trise_spinBox.value()
+            t_decay = self.ap_synaptic_tdecay_spinBox.value()
+            #t_ker = self.ap_synaptic_tkernel_spinBox.value()
 
-                freq_osc, amp_osc, width = osc_params
-
-                per_signal += sim_peak_oscillation(ap_signal, 
-                                                    fs=self.sample_rate, 
-                                                    freq=freq_osc, 
-                                                    bw=width, 
-                                                    height=amp_osc)
-
-            full_signal = per_signal + ap_signal
-
-        elif ap_model == '1/f Power Law':
-            ap_knee = self.ap_knee_spinBox.value()
-
-        elif ap_model == 'Synaptic Activity Model':
-            print()
-        elif ap_model == 'Wilson Cowan Model':
+            # model_signal = sim_synaptic_current(duration, self.sample_rate, n_neurons=n_neurons, firing_rate=firing_rate,
+            #              tau_r=t_rise, tau_d=t_decay, t_ker=t_ker)
+            model_signal = sim_synaptic_current(duration, self.sample_rate, n_neurons=n_neurons, firing_rate=firing_rate,
+                         tau_r=t_rise, tau_d=t_decay, t_ker=None)
+        elif self.ap_model == 'Wilson Cowan Model':
             print()
         elif ap_model == 'Hodgkin–Huxley Model':
             print()
+
+        per_signal = np.zeros(int(self.sample_rate*duration))
+        for osc_params in self.periodic_params:
+            freq_osc, amp_osc, width = osc_params
+            per_signal += sim_peak_oscillation(model_signal, 
+                                                fs=self.sample_rate, 
+                                                freq=freq_osc, 
+                                                bw=width, 
+                                                height=amp_osc)
+        full_signal = per_signal + model_signal
 
         if self.white_noise_checkbox.isChecked():
             nlv = self.ap_gaussian_spinBox.value()
 
             full_signal += np.random.normal(scale=nlv, size=full_signal.size)
 
-                
-
-                                     
+                            
 
 
         info = mne.create_info(ch_names=["Aperiodic"], ch_types=["misc"], sfreq=self.sample_rate)
-        self.ap_obj = mne.io.RawArray(ap_signal.reshape(1,-1), info)
+        self.ap_obj = mne.io.RawArray(model_signal.reshape(1,-1), info)
 
         info = mne.create_info(ch_names=["Full Signal"], ch_types=["misc"], sfreq=self.sample_rate)
         self.full_obj_cont = mne.io.RawArray(full_signal.reshape(1,-1), info)
