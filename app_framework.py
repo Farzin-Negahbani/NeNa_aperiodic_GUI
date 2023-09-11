@@ -47,7 +47,7 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
 
         self.dpi = dpi
         self.periodic_params = [(15.0, 3.0, 4.5)]
-        self.irasa_hset_textEdit.setText("1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9")
+        self.irasa_hset_textEdit.setText("1.1, 1.15, 1.2, 1.25")
 
         self.xscale = 'linear'
         self.yscale = 'log'
@@ -191,6 +191,7 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
                                 block=False, 
                                 #show_scrollbars=False, 
                                 #show_scalebars=False,
+                                theme='light',
                                 overview_mode='hidden')
         self.ap_browser.setFixedSize(710, 440)
         # Create a QGraphicsScene to hold the QtBrowser
@@ -204,6 +205,7 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
                                 block=False, 
                                 #show_scrollbars=False, 
                                 #show_scalebars=False,
+                                theme='light',
                                 overview_mode='hidden')
 
         self.full_browser.setFixedSize(710, 440)
