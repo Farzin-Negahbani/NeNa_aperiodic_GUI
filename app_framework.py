@@ -193,7 +193,7 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
                                 #show_scalebars=False,
                                 theme='light',
                                 overview_mode='hidden')
-        self.ap_browser.setFixedSize(710, 440)
+        self.ap_browser.setFixedSize(710, 380)
         # Create a QGraphicsScene to hold the QtBrowser
         self.ap_browser_scene = QGraphicsScene()
         self.ap_browser_scene.addWidget(self.ap_browser)
@@ -208,7 +208,7 @@ class MyApp(QMainWindow, main_window_design.Ui_dialog):
                                 theme='light',
                                 overview_mode='hidden')
 
-        self.full_browser.setFixedSize(710, 440)
+        self.full_browser.setFixedSize(710, 380)
         self.full_browser_scene = QGraphicsScene()
         self.full_browser_scene.addWidget(self.full_browser)
         self.full_signal_time_widget.setScene(self.full_browser_scene)
