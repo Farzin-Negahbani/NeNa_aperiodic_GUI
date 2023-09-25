@@ -1,7 +1,7 @@
 # NeNa_aperiodic_GUI
-Repository for "Unraveling Neural Complexity — Exploring the Separation of Oscil- lations and 1/f Noise in Neuroscience" workshop GUI 
+Repository for "Unraveling Neural Complexity — Exploring the Separation of Oscillations and 1/f Noise in Neuroscience" workshop GUI 
 
-### Singal Simulator
+### Signal Simulator
 ![](https://github.com/Farzin-Negahbani/NeNa_aperiodic_GUI/blob/main/resources/signal_simulator.png)
 
 ### Aperiodic Estimator
