@@ -2,10 +2,10 @@
 Repository for "Unraveling Neural Complexity — Exploring the Separation of Oscillations and 1/f Noise in Neuroscience" workshop GUI 
 
 ### Signal Simulator
-![](https://github.com/Farzin-Negahbani/NeNa_aperiodic_GUI/blob/main/resources/signal_simulator.png)
+![](https://github.com/Farzin-Negahbani/NeNa_aperiodic_GUI/blob/main/resources/signal_simulator_2.png)
 
 ### Aperiodic Estimator
-![](https://github.com/Farzin-Negahbani/NeNa_aperiodic_GUI/blob/main/resources/aperiodic_estimator.png)
+![](https://github.com/Farzin-Negahbani/NeNa_aperiodic_GUI/blob/main/resources/aperiodic_estimator_2.png)
 
 ## Dependencies 
 Repository is mainly in Python and the tested version is 3.9.7.
